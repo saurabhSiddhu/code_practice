@@ -1,0 +1,77 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+coverage/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+
+# Misc
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*.der
+*.csr
+*.crl
+*.srl
+*.jks
+*.keystore
+*.truststore
+*.p7b
+*.p7c
+*.p7s
+*.p12
+*.pfx
+*.pem
+*.key
+*.crt
+*.csr
+*.crl
+*.srl
+*.jks
+*.keystore
+*.truststore
+*.p7b
+*.p7c
+*.p7s 
