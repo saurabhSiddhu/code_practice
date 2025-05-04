@@ -123,7 +123,9 @@ class TestScript {
                 
                 try {
                     const Solution = require(solutionPath);
+                    const testModule = require(testPath);
                     const solutionInstance = new Solution();
+                    solutionInstance.testCases = testModule.testCases;
                     const runner = new TestRunner(solutionInstance, this.options);
                     
                     const testResults = runner.runTests();
@@ -158,11 +160,13 @@ class TestScript {
             process.exit(1);
         }
 
-        const { solutionPath } = this.validateSolutionFiles(solutionDir);
+        const { solutionPath, testPath } = this.validateSolutionFiles(solutionDir);
 
         try {
             const Solution = require(solutionPath);
+            const testModule = require(testPath);
             const solution = new Solution();
+            solution.testCases = testModule.testCases;
             const runner = new TestRunner(solution, this.options);
             
             const testResults = runner.runTests();

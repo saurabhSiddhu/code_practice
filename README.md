@@ -12,11 +12,13 @@ A comprehensive collection of LeetCode problem solutions with detailed test case
 - 📝 Multiple output formats (console, JSON, HTML)
 - 🔧 Easy to extend and maintain
 - 🚀 Quick solution creation
+- 🔍 Built-in debugging support
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
 - npm (v6 or higher)
+- VS Code (for debugging)
 
 ## Installation
 
@@ -48,6 +50,8 @@ leetcode-solutions/
 ├── scripts/               # Utility scripts
 │   ├── test.js           # Test runner script
 │   └── create-solution.js # Solution creation script
+├── .vscode/              # VS Code configuration
+│   └── launch.json       # Debug configuration
 └── package.json          # Project configuration
 ```
 
@@ -139,6 +143,35 @@ Example:
 npm test two-sum --skip-performance --filter="edge case"
 ```
 
+### Debugging Solutions
+
+The project supports debugging through VS Code. To debug a solution:
+
+1. Open your solution file in VS Code (e.g., `src/solutions/coin-change-ii/coin-change-ii.js`)
+2. Set breakpoints by clicking on the line numbers where you want to pause execution
+3. Press F5 or click the "Run and Debug" icon in the sidebar
+4. Select "Debug Solution" from the dropdown menu
+5. The debugger will start and pause at your breakpoints
+
+Debugging Features:
+- Step through code (F10 for step over, F11 for step into)
+- Inspect variables in the Variables panel
+- Use the Debug Console to evaluate expressions
+- See the call stack
+- Use the Watch panel to monitor specific expressions
+
+Example:
+```javascript
+class Solution {
+    solve(input) {
+        const { amount, coins } = input;
+        // Set breakpoint here to inspect input values
+        const memo = new Map();
+        // ... rest of the code
+    }
+}
+```
+
 ### Test Categories
 
 - `basic`: Standard test cases
@@ -195,6 +228,7 @@ Std Dev: 0.02ms
 - `npm run test:filter`: Run with filter
 - `npm run test:category`: Run with category filter
 - `npm run test:output`: Run with specific output format
+- `npm run debug`: Run with debugger enabled
 
 ## Configuration
 

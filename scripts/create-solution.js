@@ -5,7 +5,7 @@ const FileUtils = require('../src/utils/fileUtils');
 const StringUtils = require('../src/utils/stringUtils');
 const Logger = require('../src/utils/logger');
 const Validator = require('../src/utils/validator');
-const config = require('../src/config');
+const config = require('../src/config/index');
 
 class CreateSolution {
     constructor() {

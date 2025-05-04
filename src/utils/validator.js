@@ -41,15 +41,11 @@ class Validator {
     }
 
     static validateLeetCodeLink(link) {
-        if (!link) {
-            throw new Error('LeetCode link is required');
-        }
-
-        if (typeof link !== 'string') {
+        if (link && typeof link !== 'string') {
             throw new Error('LeetCode link must be a string');
         }
 
-        if (!link.startsWith('https://leetcode.com/problems/')) {
+        if (link && !link.startsWith('https://leetcode.com/problems/')) {
             throw new Error('Invalid LeetCode problem link');
         }
     }

@@ -80,13 +80,18 @@ class TestRunner {
     }
 
     filterTests() {
-        if (!this.options.filter) return this.testCases;
-        
+        if (!this.options.filter) {
+            return this.options.skipPerformance
+                ? this.testCases.filter(t => t.category !== 'performance')
+                : this.testCases;
+        }
+
         const filter = this.options.filter.toLowerCase();
         return this.testCases.filter(test => {
             const description = this.safeToLowerCase(test.description);
             const category = this.safeToLowerCase(test.category);
-            return description.includes(filter) || category.includes(filter);
+            return (description.includes(filter) || category.includes(filter)) &&
+                (!this.options.skipPerformance || test.category !== 'performance');
         });
     }
 
@@ -99,13 +104,25 @@ class TestRunner {
         const { colors } = config;
 
         try {
+            // Test main solution
             const { result, executionTime } = this.executeTest(input);
             this.updateTimingStats(executionTime);
 
             const isCorrect = this.validateResult(result, expected, testCase.validator);
             this.updateTestResults(isCorrect, description, category);
 
-            this.logTestResult(isCorrect, description, result, expected, executionTime);
+            this.logTestResult(isCorrect, description, result, expected, executionTime, 'Main');
+
+            // Test alternative solution if available
+            if (typeof this.solution.solveAlternative === 'function') {
+                const { result: altResult, executionTime: altExecutionTime } = this.executeAlternativeTest(input);
+                this.updateTimingStats(altExecutionTime);
+
+                const isAltCorrect = this.validateResult(altResult, expected, testCase.validator);
+                this.updateTestResults(isAltCorrect, description, category);
+
+                this.logTestResult(isAltCorrect, description, altResult, expected, altExecutionTime, 'Alternative');
+            }
         } catch (error) {
             this.handleTestError(error, description, category);
         }
@@ -120,8 +137,17 @@ class TestRunner {
         return { result, executionTime };
     }
 
+    executeAlternativeTest(input) {
+        const startTime = process.hrtime.bigint();
+        const result = this.solution.solveAlternative(input);
+        const endTime = process.hrtime.bigint();
+        const executionTime = Number(endTime - startTime) / 1e6;
+
+        return { result, executionTime };
+    }
+
     validateResult(result, expected, validator) {
-        return validator 
+        return validator
             ? validator(result, expected)
             : Helpers.compareValues(result, expected);
     }
@@ -136,11 +162,12 @@ class TestRunner {
         }
     }
 
-    logTestResult(isCorrect, description, result, expected, executionTime) {
+    logTestResult(isCorrect, description, result, expected, executionTime, solutionType = '') {
         const { colors } = config;
         const status = isCorrect ? `${colors.green}✅` : `${colors.red}❌`;
-        console.log(`${status} ${description}${colors.reset}`);
-        
+        const typePrefix = solutionType ? `[${solutionType}] ` : '';
+        console.log(`${status} ${typePrefix}${description}${colors.reset}`);
+
         if (!isCorrect || this.options.detail) {
             console.log(`${colors.gray}Expected:${colors.reset} ${expected?.toString()}`);
             console.log(`${colors.gray}Got:${colors.reset} ${result?.toString()}`);
@@ -208,7 +235,7 @@ class TestRunner {
         console.log(`Passed: ${colors.green}${this.results.passed}${colors.reset}`);
         console.log(`Failed: ${colors.red}${this.results.failed}${colors.reset}`);
         console.log(`Success Rate: ${((this.results.passed / (this.results.passed + this.results.failed)) * 100).toFixed(2)}%`);
-        
+
         if (this.options.detail && this.results.timing.times.length > 0) {
             console.log(`\n${colors.bright}Performance Summary:${colors.reset}`);
             console.log(`Min Time: ${Helpers.formatTime(this.results.timing.min)}`);
