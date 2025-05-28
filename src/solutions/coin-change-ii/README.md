@@ -72,7 +72,7 @@ This problem is a classic example of the Unbounded Knapsack pattern, where we ne
    - Initialize dp[0] = 1 (one way to make amount 0)
    - For each coin, update the DP array
    - Time Complexity: O(amount * coins.length)
-   - Space Complexity: O(amount)
+   - Space Complexity: O(amount)  
 
 ### Key Insights
 
