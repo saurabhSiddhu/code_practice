@@ -2,61 +2,49 @@ class Solution {
   solve(numberOfStairs) {
     // Input validation
     if (numberOfStairs < 0) return 0;
-    if (numberOfStairs === 1) return 1;
-    if (numberOfStairs === 2) return 2;
-    if (numberOfStairs === 3) return 4;
+    if (numberOfStairs === 0) return 0; // No ways to climb 0 stairs
 
-    // Memoization for efficiency
     const memo = new Map();
-    memo.set(1, 1);
-    memo.set(2, 2);
-    memo.set(3, 4);
 
-    const getNumberOfWays = (remainingStairs) => {
-      // Check if already calculated
-      if (memo.has(remainingStairs)) {
-        return memo.get(remainingStairs);
+    const countWaysToClimb = (stairsRemaining) => {
+      // Base cases: demonstrate the recurrence relation
+      if (stairsRemaining === 0) return 1; // One way to stay at ground level
+      if (stairsRemaining === 1) return 1; // Only one 1-step
+      if (stairsRemaining === 2) return 2; // 1+1 or 2
+
+      // Check memoization
+      if (memo.has(stairsRemaining)) {
+        return memo.get(stairsRemaining);
       }
 
-      // Decision Tree Logic:
-      // To reach stair N, I could have come from:
-      // - Stair N-1 (take 1 step)
-      // - Stair N-2 (take 2 steps)
-      // - Stair N-3 (take 3 steps)
+      // Recurrence: f(n) = f(n-1) + f(n-2) + f(n-3)
+      const ways =
+        countWaysToClimb(stairsRemaining - 1) +
+        countWaysToClimb(stairsRemaining - 2) +
+        countWaysToClimb(stairsRemaining - 3);
 
-      const waysFromOneBehind = getNumberOfWays(remainingStairs - 1);
-      const waysFromTwoBehind = getNumberOfWays(remainingStairs - 2);
-      const waysFromThreeBehind = getNumberOfWays(remainingStairs - 3);
-
-      const totalWays = waysFromOneBehind + waysFromTwoBehind + waysFromThreeBehind;
-
-      // Cache the result
-      memo.set(remainingStairs, totalWays);
-      return totalWays;
+      memo.set(stairsRemaining, ways);
+      return ways;
     };
 
-    return getNumberOfWays(numberOfStairs);
+    return countWaysToClimb(numberOfStairs);
   }
-
-  // Alternative: Bottom-up approach (iterative)
-  solveIterative(numberOfStairs) {
+  solveAlternative(numberOfStairs) {
     if (numberOfStairs < 0) return 0;
+    if (numberOfStairs === 0) return 0; // No ways to climb 0 stairs
     if (numberOfStairs === 1) return 1;
     if (numberOfStairs === 2) return 2;
     if (numberOfStairs === 3) return 4;
 
-    // Build up from base cases
-    let prev3 = 1; // ways(1)
-    let prev2 = 2; // ways(2)
-    let prev1 = 4; // ways(3)
+    // Space-optimized tribonacci: store last 3 computed values
+    let prev3 = 1; // f(1) = 1 way to reach stair 1
+    let prev2 = 2; // f(2) = 2 ways to reach stair 2
+    let prev1 = 4; // f(3) = 4 ways to reach stair 3
 
     for (let i = 4; i <= numberOfStairs; i++) {
-      const current = prev1 + prev2 + prev3;
-      prev3 = prev2;
-      prev2 = prev1;
-      prev1 = current;
+      const current = prev1 + prev2 + prev3; // f(i) = f(i-1) + f(i-2) + f(i-3)
+      [prev3, prev2, prev1] = [prev2, prev1, current]; // Slide the window
     }
-
     return prev1;
   }
 }
