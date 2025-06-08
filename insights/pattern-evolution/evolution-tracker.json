@@ -1,0 +1,99 @@
+{
+  "dp-fibonacci": {
+    "patternName": "DP fibonacci",
+    "timeline": [
+      {
+        "date": "2025-06-05",
+        "problem": "climbing-stairs",
+        "variation": "tribonacci",
+        "evolution": "",
+        "trigger": ""
+      }
+    ],
+    "variations": [
+      "tribonacci"
+    ],
+    "recognitionTriggers": [
+      ""
+    ]
+  },
+  "": {
+    "patternName": "",
+    "timeline": [
+      {
+        "date": "2025-06-05",
+        "problem": "two-sum",
+        "variation": "",
+        "evolution": "",
+        "trigger": ""
+      },
+      {
+        "date": "2025-06-05",
+        "problem": "fibonacci-i",
+        "variation": "",
+        "evolution": "",
+        "trigger": ""
+      }
+    ],
+    "variations": [
+      ""
+    ],
+    "recognitionTriggers": [
+      ""
+    ]
+  },
+  "ok": {
+    "patternName": "ok",
+    "timeline": [
+      {
+        "date": "2025-06-05",
+        "problem": "coin-change-ii",
+        "variation": "ok",
+        "evolution": "",
+        "trigger": "ok"
+      }
+    ],
+    "variations": [
+      "ok"
+    ],
+    "recognitionTriggers": [
+      "ok"
+    ]
+  },
+  "e": {
+    "patternName": "e",
+    "timeline": [
+      {
+        "date": "2025-06-05",
+        "problem": "two-sum",
+        "variation": "",
+        "evolution": "",
+        "trigger": "e"
+      }
+    ],
+    "variations": [
+      ""
+    ],
+    "recognitionTriggers": [
+      "e"
+    ]
+  },
+  "r": {
+    "patternName": "r",
+    "timeline": [
+      {
+        "date": "2025-06-05",
+        "problem": "two-sum",
+        "variation": "r",
+        "evolution": "r",
+        "trigger": "r"
+      }
+    ],
+    "variations": [
+      "r"
+    ],
+    "recognitionTriggers": [
+      "r"
+    ]
+  }
+}

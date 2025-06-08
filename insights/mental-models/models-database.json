@@ -1,0 +1,93 @@
+{
+  "we-have-think-from-which-stair-we-have-come-to-current-stair": {
+    "coreInsight": "we have think from which stair we have come to current stair",
+    "problems": [
+      {
+        "name": "climbing-stairs",
+        "date": "2025-06-05",
+        "intuition": ""
+      }
+    ],
+    "analogies": [
+      "stairs"
+    ],
+    "commonMistakes": []
+  },
+  "": {
+    "coreInsight": "",
+    "problems": [
+      {
+        "name": "two-sum",
+        "date": "2025-06-05",
+        "intuition": ""
+      },
+      {
+        "name": "coin-change-ii",
+        "date": "2025-06-05",
+        "intuition": ""
+      }
+    ],
+    "analogies": [],
+    "commonMistakes": []
+  },
+  "unbounded-knapsack": {
+    "coreInsight": "unbounded knapsack",
+    "problems": [
+      {
+        "name": "coin-change-ii",
+        "date": "2025-06-05",
+        "intuition": "ok"
+      }
+    ],
+    "analogies": [
+      "`unbounded knapsack"
+    ],
+    "commonMistakes": [
+      "ok"
+    ]
+  },
+  "dynamic-problem": {
+    "coreInsight": "dynamic problem",
+    "problems": [
+      {
+        "name": "fibonacci-i",
+        "date": "2025-06-05",
+        "intuition": "yes"
+      }
+    ],
+    "analogies": [],
+    "commonMistakes": []
+  },
+  "soemr": {
+    "coreInsight": "soemr",
+    "problems": [
+      {
+        "name": "two-sum",
+        "date": "2025-06-05",
+        "intuition": "w"
+      }
+    ],
+    "analogies": [
+      "e"
+    ],
+    "commonMistakes": [
+      "e"
+    ]
+  },
+  "some": {
+    "coreInsight": "some",
+    "problems": [
+      {
+        "name": "two-sum",
+        "date": "2025-06-05",
+        "intuition": "e"
+      }
+    ],
+    "analogies": [
+      "r"
+    ],
+    "commonMistakes": [
+      "r"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "problemName": "coin-change-1",
+  "timestamp": "2024-12-27T17:05:00.000Z",
+  "mentalModel": {
+    "keyInsight": "This is a classic 'minimum ways' DP where we build solutions bottom-up by considering each coin denomination and asking 'what's the minimum coins needed if I use this coin?'",
+    "intuition": "For each amount, try every coin and see which one leads to the minimum total coins. The key insight is that dp[amount] = min(dp[amount-coin] + 1) for all valid coins",
+    "analogy": "Like making change at a store - for any amount, you check which bills/coins you have and pick the combination that uses the fewest total pieces",
+    "commonMistake": "Trying to use greedy approach (always pick largest coin first) which doesn't work when coin denominations aren't canonical (e.g., coins=[1,3,4], amount=6)"
+  },
+  "constraintIntuition": {
+    "criticalConstraint": "The constraint that coins can be reused unlimited times makes this an unbounded knapsack variant, not 0/1 knapsack",
+    "scalingLimit": "Solution scales as O(amount * coins.length) which becomes problematic when amount > 10^4 and many coin types",
+    "alternativeApproach": "For very large amounts, could use BFS from target amount down to 0, but DP bottom-up is generally more intuitive",
+    "constraintPattern": "Unlimited use + minimum optimization = unbounded DP pattern"
+  },
+  "patternEvolution": {
+    "patternFamily": "Dynamic Programming - Unbounded Knapsack/Coin Change variant",
+    "variation": "This is the 'minimum ways' variant (vs counting all ways or checking possibility)",
+    "recognitionSignals": "Minimum/maximum + unlimited items + building up to target = unbounded DP",
+    "evolutionInsight": "Understanding that coin problems are really about exploring all possible ways to build up a value, and DP lets us cache optimal subproblems"
+  },
+  "problemConnections": {
+    "similarProblems": [
+      "Coin Change II (count ways)",
+      "Perfect Squares (minimum squares to sum)",
+      "Unbounded Knapsack (maximize value)"
+    ],
+    "uniqueDifference": "This seeks minimum count while Coin Change II counts total ways, and Unbounded Knapsack maximizes value",
+    "underlyingPrinciple": "All are about trying every item multiple times and optimizing some criterion while building up to target"
+  },
+  "futureApplication": {
+    "recognitionSignal": "Minimum/maximum + can reuse items unlimited times + target sum/value",
+    "applicableTo": "Minimum steps problems, optimal resource allocation, making change problems, minimum squares/cubes to reach number",
+    "teachingMethod": "Start with base case (dp[0] = 0), then for each amount ask 'if I use this coin, what's the minimum total?' Take the best option across all coins"
+  }
+}
