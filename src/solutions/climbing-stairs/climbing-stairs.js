@@ -1,16 +1,26 @@
 class Solution {
   solve(numberOfStairs) {
     // Input validation
-    if (numberOfStairs < 0) return 0;
-    if (numberOfStairs === 0) return 0; // No ways to climb 0 stairs
+    if (numberOfStairs < 0) {
+      return 0;
+    }
+    if (numberOfStairs === 0) {
+      return 0;
+    } // No ways to climb 0 stairs
 
     const memo = new Map();
 
     const countWaysToClimb = (stairsRemaining) => {
       // Base cases: demonstrate the recurrence relation
-      if (stairsRemaining === 0) return 1; // One way to stay at ground level
-      if (stairsRemaining === 1) return 1; // Only one 1-step
-      if (stairsRemaining === 2) return 2; // 1+1 or 2
+      if (stairsRemaining === 0) {
+        return 1;
+      } // One way to stay at ground level
+      if (stairsRemaining === 1) {
+        return 1;
+      } // Only one 1-step
+      if (stairsRemaining === 2) {
+        return 2;
+      } // 1+1 or 2
 
       // Check memoization
       if (memo.has(stairsRemaining)) {
@@ -30,11 +40,21 @@ class Solution {
     return countWaysToClimb(numberOfStairs);
   }
   solveAlternative(numberOfStairs) {
-    if (numberOfStairs < 0) return 0;
-    if (numberOfStairs === 0) return 0; // No ways to climb 0 stairs
-    if (numberOfStairs === 1) return 1;
-    if (numberOfStairs === 2) return 2;
-    if (numberOfStairs === 3) return 4;
+    if (numberOfStairs < 0) {
+      return 0;
+    }
+    if (numberOfStairs === 0) {
+      return 0;
+    } // No ways to climb 0 stairs
+    if (numberOfStairs === 1) {
+      return 1;
+    }
+    if (numberOfStairs === 2) {
+      return 2;
+    }
+    if (numberOfStairs === 3) {
+      return 4;
+    }
 
     // Space-optimized tribonacci: store last 3 computed values
     let prev3 = 1; // f(1) = 1 way to reach stair 1

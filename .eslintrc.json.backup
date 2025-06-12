@@ -1,0 +1,55 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "script"
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "eqeqeq": "error",
+    "curly": "error",
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "prettier/prettier": "error"
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/utils/logger.js",
+        "src/utils/insight-tracker.js",
+        "src/utils/insight-analyzer.js"
+      ],
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["scripts/**/*.js", "prep.js"],
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["enhanced-test.js"],
+      "rules": {
+        "no-console": "off",
+        "curly": "off"
+      }
+    },
+    {
+      "files": ["src/utils/helpers.js", "src/utils/test-runner.js", "src/solutions/*/fibonacci.js"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

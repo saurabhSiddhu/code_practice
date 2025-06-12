@@ -1,11 +1,17 @@
 class Solution {
   solve({ n, edges }) {
     // Handle edge cases
-    if (n === 0) return true;
-    if (n === 1) return edges.length === 0;
+    if (n === 0) {
+      return true;
+    }
+    if (n === 1) {
+      return edges.length === 0;
+    }
 
     // Quick check: tree must have exactly n-1 edges
-    if (edges.length !== n - 1) return false;
+    if (edges.length !== n - 1) {
+      return false;
+    }
 
     // Build adjacency list
     const graph = {};
@@ -45,8 +51,12 @@ class Solution {
 
   solveAlternative({ n, edges }) {
     // Check if n - 1 edges exist
-    if (n === 0) return true;
-    if (n === 1) return edges.length === 0;
+    if (n === 0) {
+      return true;
+    }
+    if (n === 1) {
+      return edges.length === 0;
+    }
 
     if (edges.length !== n - 1) {
       return false;

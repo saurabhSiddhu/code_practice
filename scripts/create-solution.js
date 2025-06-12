@@ -5,7 +5,7 @@ const FileUtils = require('../src/utils/fileUtils');
 const StringUtils = require('../src/utils/stringUtils');
 const Logger = require('../src/utils/logger');
 const Validator = require('../src/utils/validator');
-const config = require('../src/config/index');
+// const config = require('../src/config/index'); // Currently unused
 
 class CreateSolution {
   constructor() {
@@ -52,7 +52,7 @@ class CreateSolution {
     Logger.info("Let's gather some information about the problem:");
 
     this.problemInfo.difficulty = await this.prompt('Difficulty (Easy/Medium/Hard): ');
-    Validator.validateDifficulty(this.problemInfo.difficulty);
+    this.problemInfo.difficulty = Validator.validateDifficulty(this.problemInfo.difficulty);
 
     this.problemInfo.pattern = await this.prompt('Pattern (e.g., Two Pointers, Sliding Window): ');
     Validator.validatePattern(this.problemInfo.pattern);
@@ -61,21 +61,25 @@ class CreateSolution {
     Validator.validateLeetCodeLink(this.problemInfo.leetcodeLink);
 
     const tagsInput = await this.prompt('Tags (comma-separated, e.g., Array, Hash Table): ');
+    // prettier-ignore
     this.problemInfo.tags = tagsInput.trim()
       ? tagsInput
-          .split(',')
-          .map((tag) => tag.trim())
-          .filter((tag) => tag.length > 0)
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter((tag) => tag.length > 0)
       : ['General'];
     Validator.validateTags(this.problemInfo.tags);
 
     Logger.info('Problem Statement (press Enter twice to finish):');
-    let lines = [];
+    const lines = [];
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       const line = await this.prompt('');
       if (line === '') {
         const nextLine = await this.prompt('');
-        if (nextLine === '') break;
+        if (nextLine === '') {
+          break;
+        }
         lines.push(line);
         lines.push(nextLine);
       } else {
@@ -122,6 +126,19 @@ class CreateSolution {
       );
       FileUtils.writeFile(FileUtils.getReadmeFilePath(this.solutionName), readmeContent);
       Logger.success(`Created README file: ${FileUtils.getReadmeFilePath(this.solutionName)}`);
+
+      // Create INTERVIEW_NOTES file
+      const interviewNotesContent = FileUtils.replaceTemplateVariables(
+        FileUtils.getTemplate('interviewNotes'),
+        variables
+      );
+      FileUtils.writeFile(
+        FileUtils.getInterviewNotesFilePath(this.solutionName),
+        interviewNotesContent
+      );
+      Logger.success(
+        `Created interview notes file: ${FileUtils.getInterviewNotesFilePath(this.solutionName)}`
+      );
     } catch (error) {
       Logger.error(`Error creating files: ${error.message}`);
       process.exit(1);
@@ -148,7 +165,10 @@ class CreateSolution {
         `2. Add test cases in src/solutions/${this.solutionName}/${this.solutionName}.test.js`
       );
       Logger.info('3. Update the README.md with solution approach and complexity analysis');
-      Logger.info(`4. Run tests with npm test ${this.solutionName}`);
+      Logger.info(
+        '4. Fill out the INTERVIEW_NOTES.md with insights, patterns, and similar problems'
+      );
+      Logger.info(`5. Run tests with npm test ${this.solutionName}`);
     } catch (error) {
       Logger.error(`Error creating solution: ${error.message}`);
       process.exit(1);

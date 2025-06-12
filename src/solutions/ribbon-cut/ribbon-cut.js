@@ -3,23 +3,35 @@ class Solution {
   // Main solution: Top-down DP with memoization
   solve({ lengths, ribbonLength }) {
     // Edge cases
-    if (ribbonLength === 0) return 0;
-    if (!lengths || lengths.length === 0) return 0;
+    if (ribbonLength === 0) {
+      return 0;
+    }
+    if (!lengths || lengths.length === 0) {
+      return 0;
+    }
 
     // Filter valid cuts only
     const validCuts = lengths.filter((len) => len > 0);
-    if (validCuts.length === 0) return 0;
+    if (validCuts.length === 0) {
+      return 0;
+    }
 
     const memo = new Map();
 
     // Core DP function: try all combinations
     const maxPieces = (remaining) => {
       // Base cases
-      if (remaining === 0) return 0; // Perfect fit
-      if (remaining < 0) return -Infinity; // Invalid
+      if (remaining === 0) {
+        return 0;
+      } // Perfect fit
+      if (remaining < 0) {
+        return -Infinity;
+      } // Invalid
 
       // Memoization check
-      if (memo.has(remaining)) return memo.get(remaining);
+      if (memo.has(remaining)) {
+        return memo.get(remaining);
+      }
 
       // Try each cut option
       let result = -Infinity;
@@ -47,10 +59,12 @@ class Solution {
       return 0;
     }
     const validLengths = lengths.filter((length) => length > 0);
-    if (validLengths.length === 0) return 0;
+    if (validLengths.length === 0) {
+      return 0;
+    }
 
-    let n = validLengths.length; // Fixed: was validLengths.lengths
-    let dp = Array.from({ length: n + 1 }, () =>
+    const n = validLengths.length; // Fixed: was validLengths.lengths
+    const dp = Array.from({ length: n + 1 }, () =>
       Array.from({ length: ribbonLength + 1 }, () => -Infinity)
     );
 

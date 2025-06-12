@@ -1,11 +1,17 @@
 class Solution {
   solve({ numbers, target }) {
-    if (target <= 0) return 0;
+    if (target <= 0) {
+      return 0;
+    }
 
     const memo = new Map();
     const getNumberOfWays = (num) => {
-      if (num === 0) return 1;
-      if (num < -1) return 0;
+      if (num === 0) {
+        return 1;
+      }
+      if (num < -1) {
+        return 0;
+      }
       if (memo.has(num)) {
         return memo.get(num);
       }

@@ -18,9 +18,9 @@ class Solution {
         graph[source][dest] = time;
       }
     }
-    let distances = new Array(n + 1).fill(Infinity);
+    const distances = new Array(n + 1).fill(Infinity);
     distances[k] = 0;
-    let visited = new Array(n + 1).fill(false);
+    const visited = new Array(n + 1).fill(false);
 
     // Dijkstra's algorithm
     for (let count = 0; count < n; count++) {

@@ -10,8 +10,12 @@ class Solution {
 
     const getMaximumProfit = (index, remainingLength) => {
       // Base cases
-      if (remainingLength === 0) return 0;
-      if (index >= lengths.length) return 0;
+      if (remainingLength === 0) {
+        return 0;
+      }
+      if (index >= lengths.length) {
+        return 0;
+      }
 
       // Check memoization cache
       const key = `${index}-${remainingLength}`;
@@ -43,7 +47,9 @@ class Solution {
     }
 
     // Handle edge cases
-    if (lengths.length === 0 || total === 0) return 0;
+    if (lengths.length === 0 || total === 0) {
+      return 0;
+    }
 
     const n = lengths.length;
 

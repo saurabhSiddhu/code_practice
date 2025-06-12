@@ -1,0 +1,80 @@
+{
+  "date": "2025-06-11",
+  "dailyGoal": "office work",
+  "energyLevel": 3,
+  "categories": {
+    "interview": {
+      "name": "🧠 Interview Prep",
+      "planned": [],
+      "completed": [],
+      "timeSpent": 0
+    },
+    "exercise": {
+      "name": "🏃‍♂️ Exercise",
+      "planned": [],
+      "completed": [
+        {
+          "id": 1749616885373,
+          "text": "Daily workout session",
+          "estimatedMinutes": 45,
+          "actualMinutes": 45,
+          "completed": true,
+          "addedAt": "2025-06-11T04:41:25.373Z",
+          "priority": "medium",
+          "completedAt": "2025-06-11T04:49:58.079Z"
+        }
+      ],
+      "timeSpent": 45
+    },
+    "work": {
+      "name": "💼 Work Tasks",
+      "planned": [
+        {
+          "id": 1749616885378,
+          "text": "Code review session",
+          "estimatedMinutes": 60,
+          "actualMinutes": 0,
+          "completed": false,
+          "addedAt": "2025-06-11T04:41:25.377Z",
+          "priority": "medium"
+        },
+        {
+          "id": 1749616885379,
+          "text": "2 Story points development work",
+          "estimatedMinutes": 240,
+          "actualMinutes": 0,
+          "completed": false,
+          "addedAt": "2025-06-11T04:41:25.378Z",
+          "priority": "medium"
+        }
+      ],
+      "completed": [],
+      "timeSpent": 0
+    },
+    "learning": {
+      "name": "📚 Learning & Skills",
+      "planned": [],
+      "completed": [],
+      "timeSpent": 0
+    },
+    "personal": {
+      "name": "🏠 Personal",
+      "planned": [
+        {
+          "id": 1749616885381,
+          "text": "Daily planning & admin",
+          "estimatedMinutes": 15,
+          "actualMinutes": 0,
+          "completed": false,
+          "addedAt": "2025-06-11T04:41:25.379Z",
+          "priority": "medium"
+        }
+      ],
+      "completed": [],
+      "timeSpent": 0
+    }
+  },
+  "totalTimeTracked": 0,
+  "completionScore": 48,
+  "notes": []
+}

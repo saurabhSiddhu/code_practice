@@ -1,96 +1,66 @@
-const Logger = require('./logger');
+// Validation utilities for problem creation
 
 class Validator {
   static validateSolutionName(name) {
-    if (!name) {
+    if (!name || typeof name !== 'string') {
       throw new Error('Solution name is required');
     }
-
-    if (typeof name !== 'string') {
-      throw new Error('Solution name must be a string');
+    if (name.length < 2) {
+      throw new Error('Solution name must be at least 2 characters');
     }
-
-    if (name.length < 3) {
-      throw new Error('Solution name must be at least 3 characters long');
-    }
-
-    if (!/^[a-zA-Z0-9\s-]+$/.test(name)) {
-      throw new Error('Solution name can only contain letters, numbers, spaces, and hyphens');
-    }
+    return true;
   }
 
   static validateDifficulty(difficulty) {
     const validDifficulties = ['Easy', 'Medium', 'Hard'];
-    if (!validDifficulties.includes(difficulty)) {
-      throw new Error(`Difficulty must be one of: ${validDifficulties.join(', ')}`);
+    const normalized = difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase();
+
+    if (!validDifficulties.includes(normalized)) {
+      throw new Error('Difficulty must be Easy, Medium, or Hard');
     }
+    return normalized;
   }
 
   static validatePattern(pattern) {
-    if (!pattern) {
+    if (!pattern || pattern.trim().length === 0) {
       throw new Error('Pattern is required');
     }
-
-    if (typeof pattern !== 'string') {
-      throw new Error('Pattern must be a string');
-    }
-
-    if (pattern.length < 2) {
-      throw new Error('Pattern must be at least 2 characters long');
-    }
+    return true;
   }
 
   static validateLeetCodeLink(link) {
-    if (link && typeof link !== 'string') {
-      throw new Error('LeetCode link must be a string');
+    if (!link || link.trim().length === 0) return true; // Optional
+    if (link.trim().length > 0 && !link.includes('leetcode.com')) {
+      throw new Error('Must be a valid LeetCode link or leave empty');
     }
+    return true;
   }
 
   static validateTags(tags) {
-    if (!Array.isArray(tags)) {
-      throw new Error('Tags must be an array');
-    }
-
-    if (tags.length === 0) {
+    if (!Array.isArray(tags) || tags.length === 0) {
       throw new Error('At least one tag is required');
     }
-
-    tags.forEach((tag) => {
-      if (typeof tag !== 'string') {
-        throw new Error('Each tag must be a string');
-      }
-
-      if (tag.length < 2) {
-        throw new Error('Each tag must be at least 2 characters long');
-      }
-    });
+    return true;
   }
 
   static validateProblemStatement(statement) {
-    if (!statement) {
-      throw new Error('Problem statement is required');
+    if (!statement || statement.trim().length < 10) {
+      throw new Error('Problem statement must be at least 10 characters');
     }
-
-    if (typeof statement !== 'string') {
-      throw new Error('Problem statement must be a string');
-    }
-
-    if (statement.length < 10) {
-      throw new Error('Problem statement must be at least 10 characters long');
-    }
+    return true;
   }
 
   static validateAll(problemInfo) {
     try {
-      Validator.validateSolutionName(problemInfo.name);
-      Validator.validateDifficulty(problemInfo.difficulty);
-      Validator.validatePattern(problemInfo.pattern);
-      Validator.validateLeetCodeLink(problemInfo.leetcodeLink);
-      Validator.validateTags(problemInfo.tags);
-      Validator.validateProblemStatement(problemInfo.problemStatement);
+      this.validateSolutionName(problemInfo.name);
+      this.validateDifficulty(problemInfo.difficulty);
+      this.validatePattern(problemInfo.pattern);
+      this.validateLeetCodeLink(problemInfo.leetcodeLink);
+      this.validateTags(problemInfo.tags);
+      this.validateProblemStatement(problemInfo.problemStatement);
       return true;
     } catch (error) {
-      Logger.error(error.message);
+      console.error('Validation failed:', error.message);
       return false;
     }
   }

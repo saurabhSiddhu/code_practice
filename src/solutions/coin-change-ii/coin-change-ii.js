@@ -3,13 +3,19 @@ class Solution {
     const { amount, coins } = input;
     const memo = new Map();
     function coinChangeWays(amount, index) {
-      if (amount === 0) return 1;
-      if (index >= coins.length || amount < 0) return 0;
+      if (amount === 0) {
+        return 1;
+      }
+      if (index >= coins.length || amount < 0) {
+        return 0;
+      }
       const key = `${amount}-${index}`;
-      if (memo.has(key)) return memo.get(key);
+      if (memo.has(key)) {
+        return memo.get(key);
+      }
 
-      let result1 = coinChangeWays(amount - coins[index], index);
-      let result2 = coinChangeWays(amount, index + 1);
+      const result1 = coinChangeWays(amount - coins[index], index);
+      const result2 = coinChangeWays(amount, index + 1);
       memo.set(key, result1 + result2);
       return result1 + result2;
     }
@@ -17,7 +23,7 @@ class Solution {
   }
   solveAlternative(input) {
     const { amount, coins } = input;
-    let dp = [];
+    const dp = [];
     for (let i = 0; i <= coins.length; i++) {
       dp[i] = [];
       dp[i][0] = 1;

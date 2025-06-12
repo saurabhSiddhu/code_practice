@@ -58,23 +58,22 @@ class Solution {
     }
     const n = coins.length;
     // Initialize DP table - dp[i][j] = min coins using first i coins to make amount j
-    let dp = Array.from({ length: n + 1 }, () =>
+    const dp = Array.from({ length: n + 1 }, () =>
       Array.from({ length: amount + 1 }, () => Infinity)
     );
-    
+
     // Base case: 0 coins needed to make amount 0
     for (let i = 0; i <= n; i++) {
       dp[i][0] = 0;
     }
-    
+
     // Iterate over coins
     for (let i = 1; i <= n; i++) {
-      const currentIndex = i - 1;
       const currentCoin = coins[i - 1];
       for (let j = 0; j <= amount; j++) {
         // Option 1: Skip current coin
         dp[i][j] = dp[i - 1][j];
-        
+
         // Option 2: Take current coin (if amount allows)
         if (j >= currentCoin) {
           dp[i][j] = Math.min(dp[i][j], 1 + dp[i][j - currentCoin]);

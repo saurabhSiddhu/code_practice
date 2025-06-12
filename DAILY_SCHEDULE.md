@@ -998,3 +998,274 @@ Month 3+: Mastery of routine, peak productivity
 ```
 
 **Recommended Start**: Begin with **Option B (6:00 AM wake-up)** for 2 weeks, then evaluate if you want to move to Option A for extra personal time in the evening.
+
+---
+
+## 📝 **Todo List & Time Tracking Integration**
+
+### **Morning Setup with Todo Tracker**
+
+Your daily schedule now integrates with an automated todo and time tracking system:
+
+```bash
+# Complete morning setup (includes todo initialization)
+npm run morning
+
+# Quick task management
+npm run todo          # View today's dashboard
+npm run todo-add      # Add tasks interactively
+npm run todo-report   # Generate daily report
+```
+
+### **Task Categories & Time Tracking**
+
+**🧠 Interview Prep**
+
+- Coding problems (LeetCode, system design)
+- Behavioral interview practice
+- Company research
+
+**🏃‍♂️ Exercise**
+
+- HIIT workouts, strength training
+- Active recovery, stretching
+- Sports activities
+
+**💼 Work Tasks**
+
+- Development work, code reviews
+- Meetings, documentation
+- Project planning
+
+**📚 Learning & Skills**
+
+- Technical skill development
+- Course/tutorial work
+- Reading, research
+
+**🏠 Personal**
+
+- Life admin, errands
+- Social activities, hobbies
+- Personal projects
+
+### **Daily Workflow with Time Tracking**
+
+#### **5:30-6:15 AM | Morning Routine + Setup**
+
+```bash
+# Traditional morning routine (45 min)
+# At 6:15 AM: Initialize your day
+npm run morning
+```
+
+**What this does:**
+
+- Sets energy level (1-10)
+- Sets daily goal/focus
+- Optionally adds planned tasks
+- Creates daily tracking files
+
+#### **6:15-7:00 AM | Exercise Block**
+
+```bash
+# Add today's exercise
+node scripts/todo-tracker.js add exercise "HIIT workout" 45
+
+# Start timed workout (optional Pomodoro timer)
+node scripts/todo-tracker.js pomodoro <task-id> 45
+
+# Mark complete when done
+node scripts/todo-tracker.js complete <task-id> 42  # actual time taken
+```
+
+#### **7:00-8:00 AM | Interview Prep Block**
+
+```bash
+# Add interview prep task
+node scripts/todo-tracker.js add interview "Solve longest-substring problem" 60
+
+# Work on problem with VS Code integration
+npm run solve longest-substring
+
+# Complete and track time
+node scripts/todo-tracker.js complete <task-id> 55
+```
+
+#### **8:00 AM - Work Day | Continuous Tracking**
+
+```bash
+# Add work tasks for the day
+node scripts/todo-tracker.js add work "Code review - API endpoints" 30
+node scripts/todo-tracker.js add work "Implement user dashboard" 120
+node scripts/todo-tracker.js add learning "Study system design patterns" 45
+
+# Use Pomodoro technique for focused work
+node scripts/todo-tracker.js pomodoro <task-id> 25
+
+# Track completion throughout the day
+node scripts/todo-tracker.js complete <task-id> <actual-minutes>
+```
+
+#### **Evening | Review & Planning**
+
+```bash
+# End-day review (includes todo report generation)
+npm run review
+
+# Or generate standalone report
+npm run todo-report
+```
+
+### **Advanced Todo Tracking Features**
+
+#### **Quick Commands**
+
+```bash
+# View current status
+npm run todo
+
+# Interactive task addition
+npm run todo-add
+
+# Set daily goal/energy
+node scripts/todo-tracker.js goal "Complete API implementation"
+node scripts/todo-tracker.js energy 8
+
+# Time management
+node scripts/todo-tracker.js pomodoro <task-id> 25    # 25-min focus session
+node scripts/todo-tracker.js complete <task-id> 30   # mark done with actual time
+```
+
+#### **Productivity Metrics Tracked**
+
+- **Task completion rate** (planned vs completed)
+- **Time estimation accuracy** (estimated vs actual)
+- **Category time distribution** (where you spend time)
+- **Daily productivity score** (completion rate + accuracy)
+- **Focus session success** (Pomodoro completions)
+
+#### **Daily Reports Generated**
+
+- **Task completion summary** by category
+- **Time spent breakdown** (interview prep, exercise, work, etc.)
+- **Estimation accuracy trends** (improving time prediction)
+- **Productivity insights** (most/least productive categories)
+
+### **Integration with Existing Systems**
+
+#### **Morning Routine Enhancement**
+
+```bash
+npm run morning
+# Now includes:
+# 1. Energy assessment
+# 2. Daily goal setting
+# 3. Todo tracker initialization
+# 4. Optional task planning
+# 5. VS Code workspace setup
+```
+
+#### **End-Day Review Enhancement**
+
+```bash
+npm run review
+# Now includes:
+# 1. Todo completion report
+# 2. Time tracking summary
+# 3. Productivity score
+# 4. Traditional reflection questions
+# 5. Learning analysis system (if goals missed)
+```
+
+#### **Interview Prep Integration**
+
+```bash
+# Solve problem with time tracking
+npm run solve binary-search
+# Automatically suggests: node scripts/todo-tracker.js add interview "Solve binary-search" 45
+
+# Test with time tracking
+npm run test binary-search
+# Suggests: node scripts/todo-tracker.js add interview "Test binary-search solution" 15
+```
+
+### **Sample Daily Todo Workflow**
+
+#### **Morning (6:15 AM)**
+
+```bash
+npm run morning
+# Sets energy: 8/10
+# Sets goal: "Complete system design practice + solve 2 medium problems"
+# Adds planned tasks or skips for manual addition
+```
+
+#### **Throughout Day**
+
+```bash
+# Add tasks as you plan them
+node scripts/todo-tracker.js add interview "Solve container-water problem" 45
+node scripts/todo-tracker.js add exercise "Strength training session" 45
+node scripts/todo-tracker.js add work "Implement authentication API" 120
+
+# Work with focus sessions
+node scripts/todo-tracker.js pomodoro 1749609835839 25  # 25-min focused work
+
+# Mark complete with actual time
+node scripts/todo-tracker.js complete 1749609835839 42  # took 42 min instead of 45
+```
+
+#### **Evening Check**
+
+```bash
+npm run todo          # Quick status check
+npm run todo-report   # Generate detailed report
+npm run review        # Full evening review with todo integration
+```
+
+#### **Sample Evening Report Output**
+
+```
+📊 Daily Report - 2025-06-11
+
+🎯 Daily Goal: Complete system design practice + solve 2 medium problems
+
+📈 Summary:
+- Productivity Score: 85%
+- Total Time Tracked: 245 minutes
+- Energy Level: 8/10
+
+✅ Completed Tasks:
+
+🧠 Interview Prep (105 minutes):
+- ✅ Solve container-water problem
+  - Estimated: 45min | Actual: 42min | Accuracy: 93%
+- ✅ System design: Chat application
+  - Estimated: 60min | Actual: 63min | Accuracy: 95%
+
+🏃‍♂️ Exercise (45 minutes):
+- ✅ Strength training session
+  - Estimated: 45min | Actual: 45min | Accuracy: 100%
+
+💼 Work Tasks (95 minutes):
+- ✅ Implement authentication API
+  - Estimated: 120min | Actual: 95min | Accuracy: 79%
+
+⏱️ Time Breakdown:
+- interview: 1h 45m
+- exercise: 45m
+- work: 1h 35m
+```
+
+### **Benefits of Integrated System**
+
+1. **Accurate Time Awareness**: Know exactly how long tasks take
+2. **Improved Planning**: Better estimation skills over time
+3. **Productivity Insights**: See patterns in your most effective work
+4. **Goal Achievement**: Clear tracking of daily objectives
+5. **Habit Building**: Consistent routine with measurable progress
+6. **Interview Prep Focus**: Dedicated tracking for coding practice
+7. **Work-Life Balance**: See time distribution across categories
+
+This system transforms your existing daily schedule into a data-driven productivity machine while maintaining the scientific optimizations you've already built!

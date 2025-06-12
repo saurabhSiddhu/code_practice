@@ -1,0 +1,59 @@
+{
+  "date": "2025-06-12",
+  "dailyGoal": "",
+  "energyLevel": 0,
+  "categories": {
+    "interview": {
+      "name": "🧠 Interview Prep",
+      "planned": [],
+      "completed": [
+        {
+          "id": 1749723205943,
+          "text": "Test coding problem",
+          "estimatedMinutes": 30,
+          "completed": true,
+          "addedAt": "2025-06-12T10:13:25.943Z",
+          "priority": "medium",
+          "completedAt": "2025-06-12T10:13:40.945Z"
+        },
+        {
+          "id": 1749723241518,
+          "text": "binary-search-problem",
+          "estimatedMinutes": 40,
+          "completed": true,
+          "addedAt": "2025-06-12T10:14:01.518Z",
+          "priority": "medium",
+          "completedAt": "2025-06-12T10:14:24.446Z"
+        }
+      ],
+      "timeSpent": 0
+    },
+    "exercise": {
+      "name": "🏃‍♂️ Exercise",
+      "planned": [],
+      "completed": [],
+      "timeSpent": 0
+    },
+    "work": {
+      "name": "💼 Work Tasks",
+      "planned": [],
+      "completed": [],
+      "timeSpent": 0
+    },
+    "learning": {
+      "name": "📚 Learning & Skills",
+      "planned": [],
+      "completed": [],
+      "timeSpent": 0
+    },
+    "personal": {
+      "name": "🏠 Personal",
+      "planned": [],
+      "completed": [],
+      "timeSpent": 0
+    }
+  },
+  "totalTimeTracked": 0,
+  "completionScore": 100,
+  "notes": []
+}
