@@ -23,12 +23,14 @@ A comprehensive collection of LeetCode problem solutions with detailed test case
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/leetcode-solutions.git
 cd leetcode-solutions
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
@@ -60,71 +62,111 @@ leetcode-solutions/
 ### Creating a New Solution
 
 Create a new solution with:
+
 ```bash
 npm run create "solution name"
 ```
 
 Example:
+
 ```bash
 npm run create "valid parentheses"
 ```
 
 This will:
+
 1. Create a new directory in `src/solutions/valid-parentheses`
 2. Create a solution file with a template
 3. Create a test file with example test cases
 4. Show next steps
 
 The created files will have:
+
 1. Solution file (`valid-parentheses.js`):
+
 ```javascript
 class Solution {
-    solve(input) {
-        // TODO: Implement your solution
-        return null;
-    }
+  solve(input) {
+    // TODO: Implement your solution
+    return null;
+  }
 }
 
 module.exports = Solution;
 ```
 
 2. Test file (`valid-parentheses.test.js`):
+
 ```javascript
 const Solution = require('./valid-parentheses');
 
 const solution = new Solution();
 solution.testCases = [
-    {
-        description: 'Basic test case',
-        input: null, // TODO: Add your test input
-        expected: null, // TODO: Add your expected output
-        category: 'basic'
-    },
-    {
-        description: 'Edge case',
-        input: null, // TODO: Add your test input
-        expected: null, // TODO: Add your expected output
-        category: 'edge'
-    },
-    {
-        description: 'Performance test case',
-        input: null, // TODO: Add your test input
-        expected: null, // TODO: Add your expected output
-        category: 'performance'
-    }
+  {
+    description: 'Basic test case',
+    input: null, // TODO: Add your test input
+    expected: null, // TODO: Add your expected output
+    category: 'basic'
+  },
+  {
+    description: 'Edge case',
+    input: null, // TODO: Add your test input
+    expected: null, // TODO: Add your expected output
+    category: 'edge'
+  },
+  {
+    description: 'Performance test case',
+    input: null, // TODO: Add your test input
+    expected: null, // TODO: Add your expected output
+    category: 'performance'
+  }
 ];
 
 module.exports = solution;
 ```
 
+### Creating Interview Insights
+
+Add interview preparation notes to any solution:
+
+```bash
+npm run insights <solution-name>
+```
+
+Example:
+
+```bash
+npm run insights ribbon-cut
+```
+
+This creates an `INSIGHTS.md` file with:
+
+- **Pattern/Category**: Problem classification
+- **Key Insight**: The "aha" moment that makes the problem click
+- **Intuition**: Natural approach before optimization
+- **Common Mistakes**: Pitfalls to avoid in interviews
+- **Template/Pattern**: Step-by-step approach
+- **Different Approaches**: Multiple solution strategies
+- **Real World Analogies**: Relatable comparisons
+- **Similar Problems**: Related problems for practice
+- **Follow-up Questions**: Expected interview variations
+
+You can also create insights during solution creation:
+
+```bash
+npm run create "solution name" --with-insights
+```
+
 ### Running Tests
 
 Run tests for a specific solution:
+
 ```bash
 npm test <solution-name>
 ```
 
 Example:
+
 ```bash
 npm test two-sum
 ```
@@ -139,6 +181,7 @@ npm test two-sum
 - `--output=<format>`: Output format (console|json|html)
 
 Example:
+
 ```bash
 npm test two-sum --skip-performance --filter="edge case"
 ```
@@ -154,6 +197,7 @@ The project supports debugging through VS Code. To debug a solution:
 5. The debugger will start and pause at your breakpoints
 
 Debugging Features:
+
 - Step through code (F10 for step over, F11 for step into)
 - Inspect variables in the Variables panel
 - Use the Debug Console to evaluate expressions
@@ -161,14 +205,15 @@ Debugging Features:
 - Use the Watch panel to monitor specific expressions
 
 Example:
+
 ```javascript
 class Solution {
-    solve(input) {
-        const { amount, coins } = input;
-        // Set breakpoint here to inspect input values
-        const memo = new Map();
-        // ... rest of the code
-    }
+  solve(input) {
+    const { amount, coins } = input;
+    // Set breakpoint here to inspect input values
+    const memo = new Map();
+    // ... rest of the code
+  }
 }
 ```
 
@@ -181,6 +226,7 @@ class Solution {
 ## Test Output Formats
 
 ### Basic Output (Default)
+
 ```
 ✅ Test Case 1
 ❌ Test Case 2
@@ -193,6 +239,7 @@ Success Rate: 50.00%
 ```
 
 ### Detailed Output (with --detail flag)
+
 ```
 ✅ Test Case 1
 Expected: [0, 1]
@@ -220,6 +267,7 @@ Std Dev: 0.02ms
 ### Available Commands
 
 - `npm run create "solution name"`: Create a new solution
+- `npm run insights <solution-name>`: Create interview insights for existing solution
 - `npm test <solution-name>`: Run basic tests
 - `npm run test:all`: Run all tests
 - `npm run test:performance`: Run with performance tests

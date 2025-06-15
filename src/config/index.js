@@ -1,53 +1,53 @@
 const path = require('path');
 
 const config = {
-    // Project paths
-    paths: {
-        root: path.resolve(__dirname, '..'),
-        src: path.resolve(__dirname, '..'),
-        solutions: path.resolve(__dirname, '../solutions'),
-        utils: path.resolve(__dirname, '../utils'),
-        scripts: path.resolve(__dirname, '../../scripts'),
-    },
+  // Project paths
+  paths: {
+    root: path.resolve(__dirname, '..'),
+    src: path.resolve(__dirname, '..'),
+    solutions: path.resolve(__dirname, '../solutions'),
+    utils: path.resolve(__dirname, '../utils'),
+    scripts: path.resolve(__dirname, '../../scripts')
+  },
 
-    // Test configuration
-    test: {
-        iterations: 1000,
-        warmupRuns: 10,
-        performanceThreshold: 100, // ms
-        categories: {
-            basic: 'Basic test cases',
-            edge: 'Edge cases',
-            performance: 'Performance test cases'
-        }
-    },
+  // Test configuration
+  test: {
+    iterations: 1000,
+    warmupRuns: 10,
+    performanceThreshold: 100, // ms
+    categories: {
+      basic: 'Basic test cases',
+      edge: 'Edge cases',
+      performance: 'Performance test cases'
+    }
+  },
 
-    // Output configuration
-    output: {
-        formats: ['console', 'json', 'html'],
-        colors: {
-            reset: '\x1b[0m',
-            bright: '\x1b[1m',
-            dim: '\x1b[2m',
-            underscore: '\x1b[4m',
-            blink: '\x1b[5m',
-            reverse: '\x1b[7m',
-            hidden: '\x1b[8m',
-            black: '\x1b[30m',
-            red: '\x1b[31m',
-            green: '\x1b[32m',
-            yellow: '\x1b[33m',
-            blue: '\x1b[34m',
-            magenta: '\x1b[35m',
-            cyan: '\x1b[36m',
-            white: '\x1b[37m'
-        }
-    },
+  // Output configuration
+  output: {
+    formats: ['console', 'json', 'html'],
+    colors: {
+      reset: '\x1b[0m',
+      bright: '\x1b[1m',
+      dim: '\x1b[2m',
+      underscore: '\x1b[4m',
+      blink: '\x1b[5m',
+      reverse: '\x1b[7m',
+      hidden: '\x1b[8m',
+      black: '\x1b[30m',
+      red: '\x1b[31m',
+      green: '\x1b[32m',
+      yellow: '\x1b[33m',
+      blue: '\x1b[34m',
+      magenta: '\x1b[35m',
+      cyan: '\x1b[36m',
+      white: '\x1b[37m'
+    }
+  },
 
-    // Solution template configuration
-    solution: {
-        template: {
-            class: `class Solution {
+  // Solution template configuration
+  solution: {
+    template: {
+      class: `class Solution {
     solve(input) {
         // TODO: Implement your solution
         return null;
@@ -55,7 +55,7 @@ const config = {
 }
 
 module.exports = Solution;`,
-            test: `const Solution = require('./{name}');
+      test: `const Solution = require('./{name}');
 
 const solution = new Solution();
 solution.testCases = [
@@ -80,7 +80,7 @@ solution.testCases = [
 ];
 
 module.exports = solution;`,
-            readme: `# {title}
+      readme: `# {title}
 
 <div align="center">
   <a href="{leetcodeLink}">
@@ -181,9 +181,40 @@ npm test {name} --detail
 
 - [LeetCode Problem]({leetcodeLink})
 - [Pattern Documentation](https://leetcode.com/explore/learn/card/patterns/)
-- [Related Problems](#)`
-        }
+- [Related Problems](#)`,
+      insights: `# {title} - Interview Notes
+
+## 🔧 Pattern/Category
+{pattern}
+
+## 🔑 Key Insight
+{keyInsight}
+
+## 🧠 Intuition 
+{intuition}
+
+## ⚠️ Common Mistake
+{commonMistakes}
+
+## 📋 Template/Pattern
+\`\`\`javascript
+// {pattern} Pattern:
+{templateSteps}
+\`\`\`
+
+## 🔄 Different Ways to Solve
+{approaches}
+
+## 🌍 Real World Analogies
+{analogies}
+
+## 🔗 Similar Problems
+{similarProblems}
+
+## ❓ Follow-up Questions
+{followUpQuestions}`
     }
+  }
 };
 
-module.exports = config; 
+module.exports = config;
