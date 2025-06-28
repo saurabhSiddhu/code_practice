@@ -16,6 +16,8 @@
     "test:category": "node scripts/test.js",
     "test:output": "node scripts/test.js",
     "create": "node scripts/create-solution.js",
+    "create:insights": "node scripts/create-insights.js",
+    "create:full": "node scripts/create-solution.js -- --with-insights",
     "lint": "eslint src scripts --ext .js",
     "format": "prettier --write \"src/**/*.js\" \"scripts/**/*.js\"",
     "prepare": "husky install",

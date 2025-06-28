@@ -11,7 +11,8 @@ class CreateSolution {
   constructor() {
     this.args = process.argv.slice(2);
     this.solutionName = this.args[0];
-    this.createInsights = this.args.includes('--with-insights');
+    // Default to creating insights unless --no-insights is specified
+    this.createInsights = !this.args.includes('--no-insights');
     this.rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout
